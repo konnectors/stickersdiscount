@@ -2,7 +2,6 @@ const {
   BaseKonnector,
   requestFactory,
   signin,
-  scrape,
   saveBills,
   log
 } = require('cozy-konnector-libs')
@@ -100,8 +99,6 @@ function parseDocuments($) {
         .eq(3)
         .text()
     )
-    console.log(filename, fileurl, date, commandnumber, amount)
-
     data.push({
       filename,
       fileurl,
@@ -112,27 +109,5 @@ function parseDocuments($) {
       vendor: 'stickersdiscount'
     })
   })
-
   return data
-
-  // return docs.map(doc => ({
-  //   ...doc,
-  //   // the saveBills function needs a date field
-  //   // even if it is a little artificial here (these are not real bills)
-  //   date: new Date(),
-  //   currency: '€',
-  //   vendor: 'template',
-  //   metadata: {
-  //     // it can be interesting that we add the date of import. This is not mandatory but may be
-  //     // usefull for debugging or data migration
-  //     importDate: new Date(),
-  //     // document version, usefull for migration after change of document structure
-  //     version: 1
-  //   }
-  // }))
-}
-
-// convert a price string to a float
-function normalizePrice(price) {
-  return parseFloat(price.trim().replace('£', ''))
 }
