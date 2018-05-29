@@ -4,14 +4,14 @@
   "type": "konnector",
   "language": "node",
   "icon": "icon.png",
-  "slug": "template",
-  "source": "git://github.com/konnectors/cozy-konnector-template.git",
+  "slug": "stickersdiscount",
+  "source": "git://github.com/konnectors/stickersdiscount.git",
   "editor": "Cozy",
   "vendor_link": "https://www.stickers-discount.com/",
   "categories": ["other"],
   "fields": {
     "login": {
-      "type": "text"
+      "type": "email"
     },
     "password": {
       "type": "password"
@@ -48,8 +48,8 @@
   "langs": ["fr", "en"],
   "locales": {
     "fr": {
-      "short_description": "Template de connecteur",
-      "long_description": "Ce template récupère une liste de livres sur un site de scraping",
+      "short_description": "Connecteur Stickers Discount",
+      "long_description": "Ce connecteur récupère vos factures le site de Stickers Discount",
       "permissions": {
         "bank operations": {
           "description": "Utilisé pour relier les factures à des operations bancaires"
@@ -66,8 +66,8 @@
       }
     },
     "en": {
-      "short_description": "Connector template",
-      "long_description": "This template fetches a list of books from a scraping website",
+      "short_description": "Stickers Discount connector",
+      "long_description": "This connector fetches your bills from Stickers Discount",
       "permissions": {
         "bank operations": {
           "description": "Required to link bank operations to bills"
