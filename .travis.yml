@@ -1,0 +1,40 @@
+language: node_js
+node_js:
+- '8'
+env:
+  global:
+  - GH_USER_EMAIL="travis@example.org"
+  - GH_USER_NAME="cozy-bot"
+  - DEPLOY_REPOSITORY="git@github.com:konnectors/stickersdiscount.git"
+  - secure: myiEPUkfwEobB/m2a1a3cZcZgboYfqnXbh5RJXgrc/KVgfd9Dy9nyYQoUBP3YAmb/Z9jqxLqN5Ro3UQZS+6ivdFFwSBVoYqPvH8KJbI1oMdm3DKYWMafcWrcQpHLhI04aZcKLEmj4brgNklpIZKQfRH7qonaWLH0/pqeV9LqaKRfurxW+2u7M2wPZIEfaKMKWqVdXewUq6MPRNv1HWV7LsukAgHaf72wLoiJXEEYX+1EOIayG30vam4U9j2Ayr5TLPbJ4WwbujXOpOZHx+soGPVVEfjCi/dBkPoZjeBwMjeVhtKBdcGSRf09q9/tQ10VSFFXt5ht4i/0fEkcHKO7WJsdjm4//BnolHFlcQ7MgzhNzdwgd7HO/Z1nDlRzJbuJx4NFSH4+jH0n8MurwQsv7uQhDpms+s13atrryr6uql+msQ+5PrAx8hZiCr9t4izCu/tc4aPPCf38cmIgu7SmUix0aC/4Plqqu5uWwCf5V3+rZA/JorfZ9D6ZWE/bP7q+Ry2uZPWNOTFI8wkTeBxDOGrXX88ULSNGTwGAPFvgwPf8D3eVL99k2M+TtfRy/8dL0WGkRAJNd3VnkO7FKRk/HO9yCwel/Bui8fTJMbzBhS+1bs566rMom6Dgt+9bS/vEgMP3/MKZ25xW5WH8wsPQrO3WlKqOkLlZ8tgNKvrdt0E=
+cache:
+  yarn: true
+  directories:
+  - node_modules
+branches:
+  except:
+  - build
+  - latest
+script:
+- yarn lint
+- yarn build
+deploy:
+- provider: script
+  skip-cleanup: true
+  script: DEPLOY_BRANCH=build yarn deploy && yarn cozyPublish
+  on:
+    branch: master
+- provider: script
+  skip-cleanup: true
+  script: DEPLOY_BRANCH=build yarn deploy && yarn cozyPublish
+  on:
+    tags: true
+before_install:
+- openssl aes-256-cbc -K $encrypted_63cea3ffff2a_key -iv $encrypted_63cea3ffff2a_iv
+  -in github_deploy_key.enc -out /tmp/github_deploy_key -d
+- eval "$(ssh-agent -s)"
+- chmod 600 /tmp/github_deploy_key
+- ssh-add /tmp/github_deploy_key
+after_deploy:
+- rm /tmp/github_deploy_key
+- ssh-add -D
