@@ -21,6 +21,7 @@ const request = requestFactory({
   // this allows request-promise to keep cookies between requests
   jar: true
 })
+const moment = require('moment')
 
 const baseUrl =
   'https://www.stickers-discount.com/impression-stickers-autocollant'
@@ -87,13 +88,15 @@ function parseDocuments($) {
   $('tr.tableauPbeige').each((index, tr) => {
     const $tr = cheerio.load(tr)
     const fileurl = baseUrl + '/' + $tr('td a').attr('href')
-    const filename =
-      $tr('td a')
-        .first()
-        .text() + '.pdf'
-    const date = $tr('td')
-      .eq(1)
+    const billNumber = $tr('td a')
+      .first()
       .text()
+    const date = moment(
+      $tr('td')
+        .eq(1)
+        .text(),
+      'DD/MM/YYYY'
+    )
     const commandnumber = $tr('td')
       .eq(2)
       .text()
@@ -103,9 +106,12 @@ function parseDocuments($) {
         .text()
     )
     data.push({
-      filename,
+      filename:
+        `${date.format('YYYY-MM-DD')}` +
+        `_${amount.toString()}€` +
+        `_${billNumber}.pdf`,
       fileurl,
-      date,
+      date: date.toDate(),
       commandnumber,
       amount,
       currency: 'EUR',
