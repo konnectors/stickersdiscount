@@ -108,7 +108,7 @@ function parseDocuments($) {
       date,
       commandnumber,
       amount,
-      currency: '€',
+      currency: 'EUR',
       vendor: 'stickersdiscount'
     })
   })
