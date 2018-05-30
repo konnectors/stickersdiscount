@@ -49,7 +49,7 @@
   "locales": {
     "fr": {
       "short_description": "Connecteur Stickers Discount",
-      "long_description": "Ce connecteur récupère vos factures le site de Stickers Discount",
+      "long_description": "Ce connecteur récupère vos factures depuis le site de Stickers Discount",
       "permissions": {
         "bank operations": {
           "description": "Utilisé pour relier les factures à des operations bancaires"
