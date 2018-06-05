@@ -1,6 +1,7 @@
 process.env.SENTRY_DSN =
   process.env.SENTRY_DSN ||
   'https://b2cf5e55dca5411f9b2769412e94d25f:3d1830d61b324385b8ce17bdf7b070e4@sentry.cozycloud.cc/63'
+
 const {
   BaseKonnector,
   requestFactory,
@@ -22,6 +23,7 @@ const request = requestFactory({
   jar: true
 })
 const moment = require('moment')
+const stream = require('stream')
 
 const baseUrl =
   'https://www.stickers-discount.com/impression-stickers-autocollant'
@@ -49,7 +51,8 @@ async function start(fields) {
     // this is a bank identifier which will be used to link bills to bank operations. These
     // identifiers should be at least a word found in the title of a bank operation related to this
     // bill. It is not case sensitive.
-    identifiers: ['akoufen angers']
+    identifiers: ['akoufen angers'],
+    contentType: 'application/pdf'
   })
 }
 
@@ -105,12 +108,15 @@ function parseDocuments($) {
         .eq(3)
         .text()
     )
+    const pdfStream = new stream.PassThrough()
+    const request = requestFactory({ cheerio: false, json: false })
+    const filestream = request(fileurl).pipe(pdfStream)
     data.push({
       filename:
         `${date.format('YYYY-MM-DD')}` +
         `_${amount.toString()}€` +
         `_${billNumber}.pdf`,
-      fileurl,
+      filestream,
       date: date.toDate(),
       commandnumber,
       amount,
