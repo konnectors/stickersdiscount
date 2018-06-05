@@ -1,9 +1,9 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.0",
   "name": "Stickers Discount",
   "type": "konnector",
   "language": "node",
-  "icon": "icon.svg",
+  "icon": "icon.png",
   "slug": "stickersdiscount",
   "source": "git://github.com/konnectors/stickersdiscount.git",
   "editor": "Cozy",
