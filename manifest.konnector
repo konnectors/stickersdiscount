@@ -1,14 +1,14 @@
 {
-  "version": "1.0.2",
+  "version": "1.0.3",
   "name": "Stickers Discount",
   "type": "konnector",
   "language": "node",
   "icon": "icon.svg",
   "slug": "stickersdiscount",
   "source": "git://github.com/konnectors/stickersdiscount.git",
-  "editor": "Cozy",
+  "editor": "Pierre Vandekerckhove",
   "vendor_link": "https://www.stickers-discount.com/",
-  "categories": ["other"],
+  "categories": ["shopping"],
   "fields": {
     "login": {
       "type": "email"
@@ -42,8 +42,8 @@
     }
   },
   "developer": {
-    "name": "Cozy Cloud",
-    "url": "https://cozy.io"
+    "name": "Pierre Vandekerckhove",
+    "url": "https://github.com/pierrevdk"
   },
   "langs": ["fr", "en"],
   "locales": {
