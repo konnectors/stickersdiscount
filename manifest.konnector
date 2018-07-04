@@ -83,5 +83,6 @@
         }
       }
     }
-  }
+  },
+  "banksTransactionRegExp": "\\bakoufen angers\\b"
 }
