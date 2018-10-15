@@ -84,5 +84,6 @@
       }
     }
   },
-  "banksTransactionRegExp": "\\bakoufen angers\\b"
+  "banksTransactionRegExp": "\\bakoufen angers\\b",
+  "manifest_version": "2"
 }
