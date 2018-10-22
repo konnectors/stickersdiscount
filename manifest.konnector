@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.1.0",
   "name": "Stickers Discount",
   "type": "konnector",
   "language": "node",
@@ -8,9 +8,7 @@
   "source": "git://github.com/konnectors/stickersdiscount.git",
   "editor": "Pierre Vandekerckhove",
   "vendor_link": "https://www.stickers-discount.com/",
-  "categories": [
-    "shopping"
-  ],
+  "categories": ["shopping"],
   "fields": {
     "login": {
       "type": "email"
@@ -40,19 +38,14 @@
     },
     "accounts": {
       "type": "io.cozy.accounts",
-      "verbs": [
-        "GET"
-      ]
+      "verbs": ["GET"]
     }
   },
   "developer": {
     "name": "Pierre Vandekerckhove",
     "url": "https://github.com/pierrevdk"
   },
-  "langs": [
-    "fr",
-    "en"
-  ],
+  "langs": ["fr", "en"],
   "locales": {
     "fr": {
       "short_description": "Connecteur Stickers Discount",
