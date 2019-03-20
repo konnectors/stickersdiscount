@@ -5,7 +5,7 @@
   "language": "node",
   "icon": "icon.svg",
   "slug": "stickersdiscount",
-  "source": "git://github.com/konnectors/stickersdiscount.git",
+  "source": "git@github.com:konnectors/stickersdiscount.git",
   "editor": "Pierre Vandekerckhove",
   "vendor_link": "https://www.stickers-discount.com/",
   "categories": [
